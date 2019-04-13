@@ -70,6 +70,29 @@ class Admin extends CI_Controller{
 		}
 	}
 
+	public function kategori($url=null)
+	{
+		if ($url == null) {
+			//tampil data kategori
+			$data['kategori'] = $this->m_data->tampil_kategori()->result();
+
+			//menampilkan jumlah kategori
+			$data['jumlah'] = $this->m_data->tampil_kategori()->num_rows();
+
+			$this->load->view('.header.php');
+			$this->load->view('admin/kategori/v_kategori',$data);
+		}elseif ($url == 'tambah') {
+			$this->load->view('.header.php');
+			$this->load->view('admin/kategori/v_tambahkategori');
+		}elseif ($url == 'edit') {
+			$id = $this->uri->segment('4');
+			$where = array('id_kategori' => $id);
+			$data['kategori'] = $this->m_data->edit_data($where,'kategori')->result();
+			$this->load->view('.header.php');
+			$this->load->view('admin/kategori/v_editkategori', $data);
+		}
+	}
+
 	public function login()
 	{
 		$this->load->view('admin/v_login');

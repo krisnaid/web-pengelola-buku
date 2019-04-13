@@ -3,6 +3,9 @@ class M_data extends CI_Model{
 	function tampil_data(){
 		return $this->db->get('users');
 	}
+	function tampil_kategori(){
+		return $this->db->get('kategori');
+	}
 	function input_data($data,$table){
 		$this->db->insert($table,$data);
 	}
@@ -39,28 +42,6 @@ class M_data extends CI_Model{
 	function daftar_kategori(){
 		return $this->db->get('kategori');
 	}
-	// function select_kategori($where1){
-	// 	$this->db->select('*');
-	// 	$this->db->from('buku');
-	// 	$this->db->join('kategori', 'kategori.id_kategori = buku.id_kategori', 'inner');
-	// 	$this->db->where('kategori.id_kategori', $where1);
-	// 	$query =  $this->db->get();
-	// }
-	// function daftar_k(){
-	// 	$this->db->select('*');
-	// 	$this->db->from('buku');
-	// 	$this->db->join('kategori', 'kategori.id_kategori = buku.id_kategori', 'inner');
-	// 	$query =  $this->db->get();
-	// 	if(!$query)
-	// 	{
-	// 		return false;
-	// 	}
-	// 	else
-	// 	{
-	// 		return $query;
-	// 	}
-
-	// }
 	function insert_data($data1){
 		$this->db->insert("buku", $data1);
 	}
